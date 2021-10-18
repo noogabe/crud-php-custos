@@ -1,0 +1,71 @@
+body {
+    font-family: "Poppins", sans-serif;
+    color: #333333 #258332 #899599;
+    font-size: 1em;
+    background-color: #fffff2;
+    margin-left: 55px;
+    z-index: 1;   
+    
+}
+.container {
+    /*box-shadow: 0.1px 0.1px 10px black;*/
+    /*box-sizing: border-box;*/
+    background-color:  bg-white;
+    align-items: center;
+}
+
+.active a{
+    background-color: green !important;
+    border-color: green !important;
+    color: white !important;
+}
+
+.active a:hover{
+    background-color: rgb(21, 85, 21) !important;
+    border-color: rgb(21, 85, 21) !important;
+    color: white !important;
+}
+
+input.placeholder {
+    text-align: center;
+} 
+
+.small {
+    max-width: 124.36px;
+    max-height: 37.36px;
+}
+
+.shadow {
+    -webkit-box-shadow: 0px 0px 12px 0px rgba(50, 50, 50, 0.61);
+    -moz-box-shadow:    0px 0px 12px 0px rgba(50, 50, 50, 0.61);
+    box-shadow:         0px 0px 12px 0px rgba(50, 50, 50, 0.61);
+}
+
+.shadow-small {
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow:    0px 0px 15px 0px rgba(50, 50, 50, 0.2);
+    box-shadow:         0px 0px 15px 0px rgba(50, 50, 50, 0.2);
+}
+
+.cor_editar {
+    color: black;
+}
+
+.cor_editar2 {
+    color: red;
+}
+
+.btn_acoes {
+    max-width: 85%;
+}
+
+
+#legenda{
+    font-family: "Poppins", sans-serif;
+    font-size: 2.0em;
+    text-align: center;
+    color: #258332 ;
+    font-style: bold;
+    text-shadow: none;
+}
+
