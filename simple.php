@@ -9,7 +9,7 @@ include_once('db_class.php');
 $menu = new Menu();
 
 if (!$_SESSION['ativo']) {
-    header("Location:../login.php");
+    header("Location:login.php");
 } else {
     $logado = $_SESSION['ativo'];
 
@@ -25,7 +25,7 @@ if (!$_SESSION['ativo']) {
 
         <head>
 
-            <title>Locabox - Cadastro</title>
+            <title>Cadastro</title>
             <?php $menu->getHead(); ?>
 
         </head>
