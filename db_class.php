@@ -1,17 +1,5 @@
 <?php
 
-/*
-	private $servername = "localhost";
-    private $database   = "locaboxc";
-    private $username   = "root";
-    private $password   = "";
-
-	private $host     = "localhost";
-    private $database   = "locaboxc_erp-beta4";
-    private $usuario   = "locaboxc_pedro";
-    private $senha   = "]a_s4N9qk}h!";
-*/
-
 class Db {
 	
 	private $host = "localhost";
