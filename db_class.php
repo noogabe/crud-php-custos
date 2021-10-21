@@ -2,10 +2,10 @@
 
 class Db {
 	
-	private $host = "localhost";
-    private $database   = "empresa-dbo";
-    private $usuario   = "root";
-    private $senha   = "";
+ 	private $host = "localhost";
+	private $database   = "empresa-dbo";
+	private $usuario   = "root";
+	private $senha   = "";
 
 	function __construct()
 	{
