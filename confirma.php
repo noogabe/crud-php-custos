@@ -327,17 +327,23 @@ class Confirma extends Db
     function editarCompra(){
 
         $id_pagamento = $_POST['txt_id_pagamento'];
-        $produto = $_POST['txt_editar_produto2'];
-        $classificacao = $_POST['classificacao_edit'];
-        $qtd = $_POST['txt_editar_qtd2'];
-        $unitario = $_POST['txt_valor_unitario2'];
-        $valor_total = $_POST['txt_valor_total2'];
-        $obra_geral = $_POST['txt_editar_obra_geral2'];
-        $empresa = $_POST['txt_editar_empresa2'];
-        $observacao = $_POST['txt_editar_observacao2'];
+        $fornecedor = $_POST['emitente_nome'];
+        $numero = $_POST['numero'];
+        $data = $_POST['data_emissao'];
+        $produto = $_POST['produto'];
+        $classificacao = $_POST['classificacao'];
+        $qtd = $_POST['qtd'];
+        $unitario = $_POST['valor_unitario'];
+        $valor_total = $_POST['valor_total'];
+        $obra_geral = $_POST['obra_geral'];
+        $empresa = $_POST['empresa'];
+        $observacao = $_POST['observacao'];
 
         $update_compra = "UPDATE pgtos_obras
-                        SET descricao = '$produto',
+                        SET fornecedor = '$fornecedor',
+                            numero = $numero,
+                            data_emissao = '$data',
+                            descricao = '$produto',
                             classificacao = '$classificacao',
                             qtd = $qtd,
                             valor_unitario = $unitario,
@@ -361,18 +367,24 @@ class Confirma extends Db
 
     function editarServico(){
 
-        $id_pagamento = $_POST['txt_id_pagamento'];
-        $produto = $_POST['txt_editar_produto2'];
-        $classificacao = $_POST['classificacao_edit'];
-        $qtd = $_POST['txt_editar_qtd2'];
-        $unitario = $_POST['txt_valor_unitario2'];
-        $valor_total = $_POST['txt_valor_total2'];
-        $obra_geral = $_POST['txt_editar_obra_geral2'];
-        $empresa = $_POST['txt_editar_empresa2'];
-        $observacao = $_POST['txt_editar_observacao2'];
+        $id_pagamento = $_POST['id_pagamento'];
+        $fornecedor = $_POST['emitente_nome'];
+        $numero = $_POST['numero'];
+        $data = $_POST['data_emissao'];
+        $descricao = $_POST['descricao'];
+        $classificacao = $_POST['classificacao'];
+        $qtd = $_POST['qtd'];
+        $unitario = $_POST['valor_unitario'];
+        $valor_total = $_POST['valor_total'];
+        $obra_geral = $_POST['obra_geral'];
+        $empresa = $_POST['empresa'];
+        $observacao = $_POST['observacao'];
 
-        $update_compra = "UPDATE pgtos_obras
-                        SET descricao = '$produto',
+        $update_servico = "UPDATE pgtos_obras
+                        SET fornecedor = '$fornecedor',
+                            numero = $numero,
+                            data_emissao = '$data',
+                            descricao = '$descricao',
                             classificacao = '$classificacao',
                             qtd = $qtd,
                             valor_unitario = $unitario,
@@ -383,7 +395,7 @@ class Confirma extends Db
                         WHERE id_pagamento = $id_pagamento ";
 
 
-        $update = mysqli_query($this->conecta_mysql(), $update_compra);
+        $update = mysqli_query($this->conecta_mysql(), $update_servico);
 
         if($update){
             echo "<script type='text/javascript'>alert('Alteração efetuada com sucesso!')
@@ -410,8 +422,8 @@ class Confirma extends Db
     }
 
     function apagarServico(){
-        $id_pagamento = $_POST['id_pagamento'][0];
 
+        $id_pagamento = $_POST['id_pagamento'][0];
         $delete_compra = "DELETE FROM pgtos_obras WHERE id_pagamento = '$id_pagamento'";
         $query_delete = mysqli_query($this->conecta_mysql(), $delete_compra);
 
@@ -423,7 +435,5 @@ class Confirma extends Db
                 window.location.href='listar_servicos.php';</script>";
         }
     }
-
-    
 }
 $confirma = new Confirma();

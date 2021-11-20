@@ -142,24 +142,6 @@ if (!$_SESSION['ativo']) {
             </section>
 
             <script type="text/javascript">
-                
-                $(document).ready(function() {
-                    //Função para desabilitar a tecla ENTER e não enviar formulário por acidente
-                    $('#concluir-servico').keypress(function(e) {
-                        var code = null;
-                        code = (e.keyCode ? e.keyCode : e.which);
-                        return (code == 13) ? false : true;
-                    });
-
-                    //Função obter valor total através da quantidade e valor unitário
-                    $("#vunitario_servico, #qtd_servico").change(function() {
-                        var valor_unit = $("##vunitario_servico").val();
-                        var qtd = $("#qtd_servico").val();
-                        var calculo = parseFloat(valor_unit.replace(',', '.'), 2) * parseFloat(qtd.replace(',', '.'), 2);
-                        $("#vtotal_servico").val(calculo.toFixed(2));
-
-                    });
-                });
 
                 //Formatar moeda
                 function formatarMoeda(identity) {
@@ -178,6 +160,24 @@ if (!$_SESSION['ativo']) {
                     elemento.value = valor;
                     if (valor == 'NaN') elemento.value = '';
                 }
+
+                $(document).ready(function() {
+                    //Função para desabilitar a tecla ENTER e não enviar formulário por acidente
+                    $('#concluir-servico').keypress(function(e) {
+                        var code = null;
+                        code = (e.keyCode ? e.keyCode : e.which);
+                        return (code == 13) ? false : true;
+                    });
+
+                    //Função obter valor total através da quantidade e valor unitário
+                    $("#vunitario_servico, #qtd_servico").change(function() {
+                        var valor_unit = $("#vunitario_servico").val();
+                        var qtd = $("#qtd_servico").val();
+                        var calculo = parseFloat(valor_unit.replace(',', '.'), 2) * parseFloat(qtd.replace(',', '.'), 2);
+                        $("#vtotal_servico").val(calculo.toFixed(2));
+
+                    });
+                });
 
             </script>
 
