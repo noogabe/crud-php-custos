@@ -15,12 +15,12 @@ if (!$_SESSION['ativo']) {
 
     if (!empty($logado)) {
         $objDB = new Db();
-        /* CONTINUA APOS O HTML */
+        /* Continua apos o HTML */
 
 ?>
 
-        <!DOCTYPE HTML>
-        <html lang="pt-br">
+    <!DOCTYPE HTML>
+    <html lang="pt-br">
 
         <head>
             <title>Gestão de Custos</title>
@@ -61,17 +61,15 @@ if (!$_SESSION['ativo']) {
                             <hr>
                             <h3>Visualizar Custos</h3>
                         </a>
-                    </div>
-
-                    <br>
-                </div> <br>
+                    </div><br>
+                </div><br>
             </section>
 
             <?php $menu->getFooter(); ?>
 
         </body>
 
-        </html>
+    </html>
 
 <?php
         /* Continuação da validação da pagina */

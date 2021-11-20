@@ -15,10 +15,13 @@ class Confirma extends Db
     {
         if (isset($_POST['btn_entrar'])) {
             $this->getEntrar();
+        
         } elseif (isset($_POST['btn_compra_salva'])) {
             $this->AdcCompra();
+        
         } elseif (isset($_POST['btn_servico_salva'])) {
             $this->AdcServico();
+        
         } elseif (isset($_POST['btn_editar_obras'])) {
             $contador = 0;
             $obra_geral = $_POST['obra_geral'][$contador];
@@ -106,9 +109,9 @@ class Confirma extends Db
         }
     }
 
-    function getEntrar()
-
-    {   /* validando formulário de entrada */
+    function getEntrar(){ 
+        
+        /* validando formulário de entrada */
         /* verifica se existe os campos */
         if (isset($_POST['usuario']) && isset($_POST['senha'])) {
             $usuario = $_POST['usuario'];
@@ -130,9 +133,7 @@ class Confirma extends Db
             $_SESSION['ativo'] = 1;
             $_SESSION['usuario'] = $usuario;
 
-            $userAtivo = "UPDATE usuarios 
-                            SET ativo = 1
-                            WHERE  usuario =  '$usuario'";
+            $userAtivo = "UPDATE usuarios SET ativo = 1 WHERE  usuario =  '$usuario'";
             mysqli_query($this->conecta_mysql(), $userAtivo);
 
             /* Direcionando para a pagina inicial */
@@ -140,29 +141,37 @@ class Confirma extends Db
         }
     }
 
-    function AdcCompra()
-    {
-        /* RECEBENDO DADOS DOS INPUTS E INSERINDO NO DB */
+    function AdcCompra(){
 
+        /* Recebendo dados dos inputs */
         $tipo_documento = isset($_POST['tipo_documento']) ? $_POST['tipo_documento'] : null;
+        $tipo_movimento = isset($_POST['tipo_movimento']) ? $_POST['tipo_movimento'] : null;
         $emitente_nome = isset($_POST['emitente_nome']) ? $_POST['emitente_nome'] : null;
         $numero = isset($_POST['numero']) ? $_POST['numero'] : null;
-        $numero = (int)$numero;
         $data_emissao = isset($_POST['data_emissao']) ? $_POST['data_emissao'] : null;
         $nome_produto = isset($_POST['nome_produto']) ? $_POST['nome_produto'] : null;
         $classificacao = isset($_POST['classificacao']) ? $_POST['classificacao'] : null;
         $qtd = isset($_POST['qtd']) ? $_POST['qtd'] : null;
-        $qtd = (int)$qtd;
         $valor_unitario = isset($_POST['valor_unitario']) ? $_POST['valor_unitario'] : null;
-        $valor_unitario = (float)$valor_unitario;
         $valor_total = isset($_POST['valor_total']) ? $_POST['valor_total'] : null;
-        $valor_total = (float)$valor_total;
         $obra_geral = isset($_POST['obra_geral']) ? $_POST['obra_geral'] : null;
         $empresa = isset($_POST['empresa']) ? $_POST['empresa'] : null;
         $observacao = isset($_POST['observacao']) ? $_POST['observacao'] : null;
 
+        /* Se for despesa - tipo_movimento = 1 Senao = 0 */
+        $tipo_movimento === 'Despesa' ? $tipo_movimento = 1 : 0;
+
+        /* Convertendo valores para o tipo correto */
+        $tipo_movimento = (int)$tipo_movimento;
+        $numero = (int)$numero;
+        $qtd = (int)$qtd;
+        $valor_unitario = (float)$valor_unitario;
+        $valor_total = (float)$valor_total;
+
+        /* Consulta SQL */
         $sql = " INSERT INTO pgtos_obras
                 (tipo_documento,
+                tipo_movimento,
                 fornecedor,
                 numero,
                 data_emissao, 
@@ -175,6 +184,7 @@ class Confirma extends Db
                 empresa,
                 observacao) 
                 VALUES ('$tipo_documento',
+                $tipo_movimento,
                 '$emitente_nome',
                 $numero,
                 '$data_emissao', 
@@ -187,9 +197,12 @@ class Confirma extends Db
                 '$empresa',
                 '$observacao') ";
 
-        $insert = mysqli_query($this->conecta_mysql(), $sql);
-
+        /* Se os valores não forem vazios */
         if (!empty($tipo_documento) && !empty($data_emissao) && !empty($emitente_nome) && !empty($numero) && !empty($nome_produto) && !empty($classificacao) && !empty($qtd) && !empty($valor_unitario) && !empty($valor_total) && !empty($obra_geral) && !empty($empresa)) {
+            
+            /* Insere no banco de dados */
+            $insert = mysqli_query($this->conecta_mysql(), $sql);
+            
             if ($insert) {
                 echo "<script type='text/javascript'>alert('Registro adicionado com sucesso!')
                 window.location.href='adicionar_compra2.php';</script>";
@@ -200,30 +213,33 @@ class Confirma extends Db
         }
     }
 
-    function AdcServico()
-    {
+    function AdcServico(){
 
-        /* RECEBENDO DADOS DOS INPUTS E INSERINDO NO DB */
-
+        /* Recebendo dados dos inputs */
         $tipo_documento = isset($_POST['tipo_documento']) ? $_POST['tipo_documento'] : null;
+        $tipo_movimento = isset($_POST['tipo_movimento']) ? $_POST['tipo_movimento'] : null;
         $emitente_nome = isset($_POST['emitente_nome']) ? $_POST['emitente_nome'] : null;
         $numero = isset($_POST['numero']) ? $_POST['numero'] : null;
-        $numero = (int)$numero;
         $data_emissao = isset($_POST['data_emissao']) ? $_POST['data_emissao'] : null;
         $descricao = isset($_POST['descricao_servico']) ? $_POST['descricao_servico'] : null;
         $classificacao = isset($_POST['classificacao']) ? $_POST['classificacao'] : null;
         $qtd = isset($_POST['qtd']) ? $_POST['qtd'] : null;
-        $qtd = (int)$qtd;
         $valor_unitario = isset($_POST['valor_unitario']) ? $_POST['valor_unitario'] : null;
-        $valor_unitario = (float)$valor_unitario;
         $valor_total = isset($_POST['valor_total']) ? $_POST['valor_total'] : null;
-        $valor_total = (float)$valor_total;
         $obra_geral = isset($_POST['obra_geral']) ? $_POST['obra_geral'] : null;
         $empresa = isset($_POST['empresa']) ? $_POST['empresa'] : null;
         $observacao = isset($_POST['observacao']) ? $_POST['observacao'] : null;
 
+        /* Convertendo valores para o tipo correto */
+        $numero = (int)$numero;
+        $qtd = (int)$qtd;
+        $valor_unitario = (float)$valor_unitario;
+        $valor_total = (float)$valor_total;
+
+        /* Consulta SQL */
         $sql = " INSERT INTO pgtos_obras
                 (tipo_documento,
+                tipo_movimento,
                 fornecedor,
                 numero,
                 data_emissao, 
@@ -236,6 +252,7 @@ class Confirma extends Db
                 empresa,
                 observacao) 
                 VALUES ('$tipo_documento',
+                $tipo_movimento,
                 '$emitente_nome',
                 $numero,
                 '$data_emissao', 
@@ -248,10 +265,13 @@ class Confirma extends Db
                 '$empresa',
                 '$observacao') ";
 
-        $insert2 = mysqli_query($this->conecta_mysql(), $sql);
-
+        /* Se os valores não forem vazios */
         if (!empty($tipo_documento) && !empty($data_emissao) && !empty($emitente_nome) && !empty($numero) && !empty($descricao) && !empty($classificacao) && !empty($qtd) && !empty($valor_unitario) && !empty($valor_total) && !empty($obra_geral) && !empty($empresa)) {
-            if ($insert2) {
+            
+            /* Insere no banco de dados */
+            $insert = mysqli_query($this->conecta_mysql(), $sql);
+
+            if ($insert) {
                 echo "<script type='text/javascript'>alert('Registro adicionado com sucesso!')
                     window.location.href='adicionar_servico2.php';</script>";
             } else {
@@ -261,14 +281,12 @@ class Confirma extends Db
         }
     }
 
-    function editarObra()
-    {
+    function editarObra(){
 
         $edit_obra_geral = $_POST['txt_editar_obra'];
         $id_obra_geral = $_POST['txt_id_obra_geral'];
 
-        $update_obra = "UPDATE obras_gerais 
-                        SET obra_geral = '$edit_obra_geral'
+        $update_obra = "UPDATE obras_gerais SET obra_geral = '$edit_obra_geral'
                         WHERE id_obra_geral = $id_obra_geral ";
 
         $update = mysqli_query($this->conecta_mysql(), $update_obra);
@@ -282,21 +300,18 @@ class Confirma extends Db
         }
     }
 
-    function editarSubObra()
-    {
+    function editarSubObra(){
 
         $edit_sub_obra = $_POST['txt_editar_sub_obra'];
         $id_sub_obra = $_POST['txt_id_sub_obra'];
         $fk_obra_geral = $_POST['fk_obg_sub'];
         
-        $update_sub_obra = "UPDATE sub_obras 
-                        SET sub_obra = '$edit_sub_obra',
-                            fk_obra_geral = $fk_obra_geral
-                        WHERE id_sub_obra = $id_sub_obra ";
+        $update_sub_obra = "UPDATE sub_obras SET sub_obra = '$edit_sub_obra', fk_obra_geral = $fk_obra_geral
+                            WHERE id_sub_obra = $id_sub_obra ";
 
-        $update2 = mysqli_query($this->conecta_mysql(), $update_sub_obra);
+        $update = mysqli_query($this->conecta_mysql(), $update_sub_obra);
 
-        if ($update2) {
+        if ($update) {
             echo "<script type='text/javascript'>alert('Alteração efetuada com sucesso!')
                     window.location.href='listar_sub_obras.php';</script>";
         } else {
@@ -306,13 +321,14 @@ class Confirma extends Db
     }
 
     function editarCompra(){
+
         $id_pagamento = $_POST['txt_id_pagamento'];
         $produto = $_POST['txt_editar_produto2'];
         $classificacao = $_POST['classificacao_edit'];
         $qtd = $_POST['txt_editar_qtd2'];
         $unitario = $_POST['txt_valor_unitario2'];
         $valor_total = $_POST['txt_valor_total2'];
-        $obra_geral3 = $_POST['txt_editar_obra_geral2'];
+        $obra_geral = $_POST['txt_editar_obra_geral2'];
         $empresa = $_POST['txt_editar_empresa2'];
         $observacao = $_POST['txt_editar_observacao2'];
 
@@ -322,7 +338,7 @@ class Confirma extends Db
                             qtd = $qtd,
                             valor_unitario = $unitario,
                             valor_total = $valor_total,
-                            obra_geral = '$obra_geral3',
+                            obra_geral = '$obra_geral',
                             empresa = '$empresa',
                             observacao = '$observacao'               
                         WHERE id_pagamento = $id_pagamento ";
@@ -340,13 +356,14 @@ class Confirma extends Db
     }
 
     function editarServico(){
+
         $id_pagamento = $_POST['txt_id_pagamento'];
         $produto = $_POST['txt_editar_produto2'];
         $classificacao = $_POST['classificacao_edit'];
         $qtd = $_POST['txt_editar_qtd2'];
         $unitario = $_POST['txt_valor_unitario2'];
         $valor_total = $_POST['txt_valor_total2'];
-        $obra_geral3 = $_POST['txt_editar_obra_geral2'];
+        $obra_geral = $_POST['txt_editar_obra_geral2'];
         $empresa = $_POST['txt_editar_empresa2'];
         $observacao = $_POST['txt_editar_observacao2'];
 
@@ -356,7 +373,7 @@ class Confirma extends Db
                             qtd = $qtd,
                             valor_unitario = $unitario,
                             valor_total = $valor_total,
-                            obra_geral = '$obra_geral3',
+                            obra_geral = '$obra_geral',
                             empresa = '$empresa',
                             observacao = '$observacao'               
                         WHERE id_pagamento = $id_pagamento ";
@@ -374,8 +391,8 @@ class Confirma extends Db
     }
 
     function apagarCompra(){
-        $id_pagamento = $_POST['id_pagamento'][0];
 
+        $id_pagamento = $_POST['id_pagamento'][0];
         $delete_compra = "DELETE FROM pgtos_obras WHERE id_pagamento = '$id_pagamento'";
         $query_delete = mysqli_query($this->conecta_mysql(), $delete_compra);
 

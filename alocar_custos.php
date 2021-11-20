@@ -16,12 +16,12 @@ if (!$_SESSION['ativo']) {
     if (!empty($logado)) {
         $objDB = new Db();
         $link = $objDB->conecta_mysql();
-        /* CONTINUA APOS O HTML */
+        /* Continua apos o HTML */
 
 ?>
 
-        <!DOCTYPE HTML>
-        <html lang="pt-br">
+    <!DOCTYPE HTML>
+    <html lang="pt-br">
 
         <head>
 
@@ -41,26 +41,22 @@ if (!$_SESSION['ativo']) {
             <section class='container col-9'>
                 <div class='row'>
                     <legend class="title h1 text-center mb-4 mt-4">Distribuir Custos</legend>
-
                     <!-- Button  -->
                     <button type="button" class="btn btn-success btn-block shadow col-sm m-1" onclick="window.location.href='./listar_compras.php'">
                         <h3>NFe</h3>
                     </button>
-
                     <!-- Button  -->
                     <button type="button" class="btn btn-success btn-block shadow col-sm m-1" onclick="window.location.href='./listar_servicos.php'">
                         <h3>NFs</h3>
                     </button>
-                    
                 </div><br>
-
             </section>
 
             <?php $menu->getFooter(); ?>
 
         </body>
 
-        </html>
+    </html>
 
 <?php
         /* Continuação da validação da pagina */
