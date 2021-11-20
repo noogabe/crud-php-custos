@@ -45,7 +45,7 @@ if (!$_SESSION['ativo']) {
                                         <strong>Fornecedor:</strong><br>
                                         <input autocomplete="off" class='text-box form-control' type="text" name="emitente_nome" rows="1" placeholder="Fornecedor" required>
                                     </div>
-                                    <div class="cosl">
+                                    <div class="col">
                                         <strong>Tipo de movimento:</strong><br>
                                         <select required class="custom-select" name="tipo_movimento">
                                             <option value="" disabled selected>Selecione um tipo de movimento</option>
