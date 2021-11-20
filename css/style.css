@@ -1,26 +1,85 @@
+html {
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
 body {
     font-family: "Poppins", sans-serif;
     color: #333333 #258332 #899599;
     font-size: 1em;
     background-color: #fffff2;
     margin-left: 55px;
-    z-index: 1;   
-    
+    margin: 0;
+    z-index: 1;
+    width: 100%;
 }
+
+html, body {
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    line-height: 1.5
+}
+
+:root {
+    accent-color: #258332;
+}
+
+strong {
+    font-weight: bolder
+}
+
+img {
+    border-style: none
+}
+
+h1 {
+    font-size: 36px
+}
+
+h2 {
+    font-size: 30px
+}
+
+h3 {
+    font-size: 24px
+}
+
+h4 {
+    font-size: 20px
+}
+
+h5 {
+    font-size: 18px
+}
+
+h6 {
+    font-size: 16px
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    margin: 10px 0
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0
+}
+
 .container {
-    /*box-shadow: 0.1px 0.1px 10px black;*/
-    /*box-sizing: border-box;*/
-    background-color:  bg-white;
+    background-color: bg-white;
     align-items: center;
 }
 
-.active a{
+.active a {
     background-color: green !important;
     border-color: green !important;
     color: white !important;
 }
 
-.active a:hover{
+.active a:hover {
     background-color: rgb(21, 85, 21) !important;
     border-color: rgb(21, 85, 21) !important;
     color: white !important;
@@ -28,7 +87,7 @@ body {
 
 input.placeholder {
     text-align: center;
-} 
+}
 
 .small {
     max-width: 124.36px;
@@ -37,14 +96,8 @@ input.placeholder {
 
 .shadow {
     -webkit-box-shadow: 0px 0px 12px 0px rgba(50, 50, 50, 0.61);
-    -moz-box-shadow:    0px 0px 12px 0px rgba(50, 50, 50, 0.61);
-    box-shadow:         0px 0px 12px 0px rgba(50, 50, 50, 0.61);
-}
-
-.shadow-small {
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.2);
-    -moz-box-shadow:    0px 0px 15px 0px rgba(50, 50, 50, 0.2);
-    box-shadow:         0px 0px 15px 0px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0px 0px 12px 0px rgba(50, 50, 50, 0.61);
+    box-shadow: 0px 0px 12px 0px rgba(50, 50, 50, 0.61);
 }
 
 .cor_editar {
@@ -59,13 +112,85 @@ input.placeholder {
     max-width: 85%;
 }
 
-
-#legenda{
+#legenda {
     font-family: "Poppins", sans-serif;
     font-size: 2.0em;
     text-align: center;
-    color: #258332 ;
+    color: #258332;
     font-style: bold;
     text-shadow: none;
 }
 
+input.custom-select.esconder {
+    display: none;
+}
+
+select.custom-select.esconder {
+    display: none;
+}
+
+#myScroll, #myScroll2 {
+    display: none;
+}
+
+.fab {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.fab button {
+    cursor: pointer;
+    width: 65px;
+    height: 65px;
+    border-radius: 50px;
+    background-color: #4CAF50;
+    border: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .4);
+    font-size: 24px;
+    color: white;
+    -webkit-transition: .2s ease-out;
+    -moz-transition: .2s ease-out;
+    transition: .2s ease-out;
+}
+
+.fab button.main {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: #4CAF50;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+}
+
+.fab button.main:active, .fab button.main:focus {
+    outline: none;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .5);
+}
+
+.fab :hover {
+    color: #4CAF50;
+}
+
+#nav-tabContent, #nav-tabContent2 {
+    background-color: white;
+}
+
+.nav-tabs a {
+    color: #212529;
+}
+
+.nav-tabs a:hover {
+    color: #212529;
+    background-color: rgba(255, 255, 255, 0.877);
+}
+
+.negativo {
+    color: #A94442;
+}
+
+.positivo {
+    color: #258332;
+}
