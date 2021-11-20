@@ -40,9 +40,19 @@ if (!$_SESSION['ativo']) {
                         <div class="row">
                             <div class="col-sm-12">
                                 <input type="hidden" name="tipo_documento" value="NFS">
-                                <div>
-                                    <strong>Fornecedor:</strong><br>
-                                    <input autocomplete="off" class='text-box form-control' type="text" name="emitente_nome" rows="1" placeholder="Fornecedor" required>
+                                <div class="row">
+                                    <div class="col">
+                                        <strong>Fornecedor:</strong><br>
+                                        <input autocomplete="off" class='text-box form-control' type="text" name="emitente_nome" rows="1" placeholder="Fornecedor" required>
+                                    </div>
+                                    <div class="cosl">
+                                        <strong>Tipo de movimento:</strong><br>
+                                        <select required class="custom-select" name="tipo_movimento">
+                                            <option value="" disabled selected>Selecione um tipo de movimento</option>
+                                            <option value="Despesa">Despesa</option>
+                                            <option value="Receita">Receita</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">

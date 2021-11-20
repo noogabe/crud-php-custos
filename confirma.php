@@ -230,7 +230,11 @@ class Confirma extends Db
         $empresa = isset($_POST['empresa']) ? $_POST['empresa'] : null;
         $observacao = isset($_POST['observacao']) ? $_POST['observacao'] : null;
 
+        /* Se for despesa - tipo_movimento = 1 Senao = 0 */
+        $tipo_movimento === 'Despesa' ? $tipo_movimento = 1 : 0;
+
         /* Convertendo valores para o tipo correto */
+        $tipo_movimento = (int)$tipo_movimento;
         $numero = (int)$numero;
         $qtd = (int)$qtd;
         $valor_unitario = (float)$valor_unitario;
