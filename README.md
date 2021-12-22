@@ -38,6 +38,6 @@ $ git clone https://github.com/GabrieleAlmeida/crud-php-custos.git
 <h1 align="center">
 
 <img src="https://github.com/GabrieleAlmeida/crud-php-custos/blob/main/img/custo.gif"
-    height="400">
+    height="100%">
     
 </h1>
