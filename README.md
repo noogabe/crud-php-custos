@@ -21,15 +21,15 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
 #Parte 2: No Xampp, dê start nos módulos Apache e Mysql
 
 #Parte 3: Clone o repositório para sua máquina local
-$ git clone https://github.com/GabrieleAlmeida/crud-php-custos.git
+$ git clone https://github.com/noogabe/crud-php-custos.git
 
 #Parte 4: Mova o repositório para o diretório C:\xampp\htdocs
 
-#Parte 5: No seu navegador, digite localhost/phpmyadmin e crie um banco de dados chamado 'empresa-dbo'
+#Parte 5: No seu navegador, digite localhost:80/phpmyadmin e crie um banco de dados chamado 'empresa-dbo'
 
 #Parte 6: Importe o arquivo empresa-dbo.sql para o seu banco de dados
 
-#Parte 7: Depois é so abrir o seguinte endereço no seu navegador: localhost/crud-php-custos/index.php
+#Parte 7: Depois é so abrir o seguinte endereço no seu navegador: localhost:80/crud-php-custos/index.php
 
 ```
 
@@ -37,7 +37,7 @@ $ git clone https://github.com/GabrieleAlmeida/crud-php-custos.git
 
 <h1 align="center">
 
-<img src="https://github.com/GabrieleAlmeida/crud-php-custos/blob/main/img/custo.gif"
+<img src="https://github.com/noogabe/crud-php-custos/blob/main/img/custo.gif"
     height="100%">
     
 </h1>
